@@ -761,4 +761,10 @@
     <string name="menu_user_verification_disabled">Vérification Utilisateur désactivé</string>
     <string name="education_user_verification_title">Vérification pour les actions sensibles</string>
     <string name="education_user_verification_summary">Changer le mode de vérification de l\'utilisateur pour cette session\n\n\"Vérification Utilisateur activé\" vérifie l\'action pour les champs protégés et les paramètres de base de données.\n\"Vérification Utilisateur désactivé\" vous permet de changer toute donnée dans votre base de données sans vérification.</string>
+    <string name="content_description_share_url">Partager l\'URL</string>
+    <string name="show_tags_title">Afficher les balises</string>
+    <string name="show_tags_summary">Affiche les balises dans la liste des entrées</string>
+    <string name="benchmark_calculation">Calculer pour %1$s s</string>
+    <string name="benchmarking">Analyse en cours…</string>
+    <string name="keyboard_share_browser">Partager depuis %1$s vers KeePassDX</string>
 </resources>
