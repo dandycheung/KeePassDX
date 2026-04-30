@@ -744,4 +744,10 @@
     <string name="menu_user_verification_disabled">تحقق المستخدم مُعطّل</string>
     <string name="education_user_verification_title">التحقق للإجراءات الحساسة</string>
     <string name="education_user_verification_summary">غيِّر وضع التحقق من المستخدم للجلسة.\n\n\"تحقق المستخدم مُفعّل\" يتحقق من الإجراء على الحقول المحمية وإعدادات قاعدة البيانات.\n\"تحقق المستخدم مُعطّل\" يتيح لك تغيير أي بيانات في قاعدة بياناتك دون التحقق.</string>
+    <string name="content_description_share_url">شارك رابط URL</string>
+    <string name="show_tags_title">أظهر الوسوم</string>
+    <string name="show_tags_summary">يعرض الوسوم في قائمة المدخلات</string>
+    <string name="benchmark_calculation">الحساب لمدّة %1$s ث</string>
+    <string name="benchmarking">يختبر الأداء…</string>
+    <string name="keyboard_share_browser">شارك من %1$s إلى KeePassDX</string>
 </resources>
