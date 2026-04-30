@@ -342,7 +342,7 @@
     <string name="sort_ascending">Thấp nhất trước ↓</string>
     <string name="sort_groups_before">Nhóm trước</string>
     <string name="sort_recycle_bin_bottom">Thùng rác ở phía dưới</string>
-    <string name="sort_db">Thứ tự tự nhiên</string>
+    <string name="sort_db">Thứ tự</string>
     <string name="sort_title">Tiêu đề</string>
     <string name="sort_username">Tên người dùng</string>
     <string name="sort_creation_time">Thời điểm tạo</string>
@@ -733,4 +733,22 @@
     <string name="passkeys_missing_signature_app_ask_question">Thêm chữ ký ứng dụng vào mục khóa kĩ thuật số?</string>
     <string name="passkey_creation_description">Lưu khóa kĩ thuật số vào một đề mục mới</string>
     <string name="password_creation_description">Lưu mật khẩu vào một đề mục mới</string>
+    <string name="content_description_share_url">Chia sẻ URL</string>
+    <string name="nodes">Điểm</string>
+    <string name="recursive_number_entries_title">Số lượng đề mục đệ quy</string>
+    <string name="recursive_number_entries_summary">Đệ quy tính số lượng đề mục trong nhóm</string>
+    <string name="show_tags_title">Hiện các thẻ</string>
+    <string name="show_tags_summary">Hiện các thẻ trong danh sách đề mục</string>
+    <string name="warning_overwrite_data_title">Ghi đè dữ liệu có sẵn?</string>
+    <string name="credential_provider">Nhà cung cấp thông tin</string>
+    <string name="passkeys">Khóa truy cập</string>
+    <string name="passkeys_explanation_summary">Thiết lập khóa truy cập để đăng nhập nhanh và bảo mật</string>
+    <string name="passkeys_privileged_apps_title">Ứng dụng có quyền hạn cao</string>
+    <string name="passkeys_privileged_apps_summary">Quản lý trình duyệt trong danh sách các ứng dụng có quyền hạn cao</string>
+    <string name="passkeys_privileged_apps_explanation">CẢNH BÁO: Một ứng dụng có quyền hạn cao đóng vai trò như một vật thể có thể ghi chép nguồn gốc của một bộ xác thực. Hãy đảm bảo rằng chúng đáng tin để tránh các rủi ro bảo mật.</string>
+    <string name="passkeys_privileged_apps_ask_title">Không thể nhận dạng ứng dụng</string>
+    <string name="passkeys_privileged_apps_ask_message">%1$s đang cố sử dụng khóa truy cập.\n\nThêm nó vào danh sách các ứng dụng có quyền hạn cao?</string>
+    <string name="passkeys_missing_signature_app_ask_title">Thiếu chữ ký</string>
+    <string name="passkeys_missing_signature_app_ask_message">Không thể nhận dạng %1$s để sử dụng khóa truy cập có sẵn.</string>
+    <string name="passkeys_auto_select_title">Tự động chọn</string>
 </resources>
