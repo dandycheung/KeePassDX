@@ -757,4 +757,10 @@
     <string name="menu_user_verification_disabled">Felhasználó-ellenőrzés letiltva</string>
     <string name="education_user_verification_title">Érzékeny műveletek ellenőrzése</string>
     <string name="education_user_verification_summary">A munkamenet felhasználói ellenőrzési módjának módosítása.\n \nA „Felhasználó-ellenőrzés engedélyezve” beállítás ellenőrzi a védett mezőkben és az adatbázis beállításaiban végzett műveleteket.\nA „Felhasználó-ellenőrzés letiltva” beállítás lehetővé teszi az adatbázisban szereplő adatok ellenőrzés nélküli módosítását.</string>
+    <string name="content_description_share_url">Webcím megosztása</string>
+    <string name="show_tags_title">Címkék megjelenítése</string>
+    <string name="show_tags_summary">Megjeleníti a címkéket a bejegyzések listájában</string>
+    <string name="benchmark_calculation">Számítás %1$s másodpercre</string>
+    <string name="benchmarking">Összehasonlítás…</string>
+    <string name="keyboard_share_browser">Megosztás innen: %1$s a KeePassDX-be</string>
 </resources>
