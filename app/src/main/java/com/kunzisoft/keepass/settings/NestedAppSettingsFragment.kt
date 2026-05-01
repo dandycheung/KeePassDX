@@ -36,8 +36,8 @@ import com.kunzisoft.keepass.activities.dialogs.UnavailableFeatureDialogFragment
 import com.kunzisoft.keepass.activities.stylish.Stylish
 import com.kunzisoft.keepass.app.database.FileDatabaseHistoryAction
 import com.kunzisoft.keepass.biometric.DeviceUnlockManager
-import com.kunzisoft.keepass.credentialprovider.autofill.KeeAutofillService.Companion.isKeeAutofillActivated
 import com.kunzisoft.keepass.credentialprovider.autofill.KeeAutofillService.Companion.showAutofillDeviceSettings
+import com.kunzisoft.keepass.credentialprovider.autofill.isKeeAutofillActivated
 import com.kunzisoft.keepass.credentialprovider.magikeyboard.MagikeyboardService.Companion.isMagikeyboardActivated
 import com.kunzisoft.keepass.credentialprovider.magikeyboard.MagikeyboardService.Companion.showKeyboardDeviceSettings
 import com.kunzisoft.keepass.education.Education

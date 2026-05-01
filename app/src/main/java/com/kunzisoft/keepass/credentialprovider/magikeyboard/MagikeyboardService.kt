@@ -56,7 +56,7 @@ import com.kunzisoft.keepass.adapters.KeyboardEntriesAdapter
 import com.kunzisoft.keepass.adapters.KeyboardFieldsAdapter
 import com.kunzisoft.keepass.credentialprovider.TypeMode
 import com.kunzisoft.keepass.credentialprovider.activity.EntrySelectionLauncherActivity
-import com.kunzisoft.keepass.credentialprovider.autofill.KeeAutofillService.Companion.isKeeAutofillActivated
+import com.kunzisoft.keepass.credentialprovider.autofill.isKeeAutofillActivated
 import com.kunzisoft.keepass.database.ContextualDatabase
 import com.kunzisoft.keepass.database.DatabaseTaskProvider
 import com.kunzisoft.keepass.database.element.Field

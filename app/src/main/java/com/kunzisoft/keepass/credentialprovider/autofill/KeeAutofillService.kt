@@ -477,9 +477,10 @@ class KeeAutofillService : AutofillService() {
     companion object {
         private val TAG = KeeAutofillService::class.java.name
 
-        fun autofillAllowedFor(applicationId: String?,
-                               webDomain: String?,
-                               context: Context
+        fun autofillAllowedFor(
+            applicationId: String?,
+            webDomain: String?,
+            context: Context
         ): Boolean {
             return autofillAllowedFor(
                 applicationId = applicationId,
@@ -488,10 +489,11 @@ class KeeAutofillService : AutofillService() {
                 webDomainBlocklist = PreferencesUtil.webDomainBlocklist(context))
         }
 
-        fun autofillAllowedFor(applicationId: String?,
-                               applicationIdBlocklist: Set<String>?,
-                               webDomain: String?,
-                               webDomainBlocklist: Set<String>?
+        fun autofillAllowedFor(
+            applicationId: String?,
+            applicationIdBlocklist: Set<String>?,
+            webDomain: String?,
+            webDomainBlocklist: Set<String>?
         ): Boolean {
             return autofillAllowedFor(applicationId, applicationIdBlocklist)
                     // To prevent unrecognized autofill popup id
@@ -499,7 +501,10 @@ class KeeAutofillService : AutofillService() {
                     && autofillAllowedFor(webDomain, webDomainBlocklist)
         }
 
-        fun autofillAllowedFor(element: String?, blockList: Set<String>?): Boolean {
+        fun autofillAllowedFor(
+            element: String?,
+            blockList: Set<String>?
+        ): Boolean {
             element?.let { elementNotNull ->
                 if (blockList?.any { appIdBlocked ->
                             elementNotNull.contains(appIdBlocked)
@@ -510,14 +515,6 @@ class KeeAutofillService : AutofillService() {
                 }
             }
             return true
-        }
-
-        fun Context.isKeeAutofillActivated(): Boolean {
-            val activated = ContextCompat.getSystemService(
-                this,
-                AutofillManager::class.java
-            )?.hasEnabledAutofillServices() == true
-            return activated
         }
 
         fun Context.showAutofillDeviceSettings() {
@@ -532,5 +529,16 @@ class KeeAutofillService : AutofillService() {
                 Log.e(TAG, "Unable to choose the autofill service", e)
             }
         }
+    }
+}
+
+fun Context.isKeeAutofillActivated(): Boolean {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        ContextCompat.getSystemService(
+            this,
+            AutofillManager::class.java
+        )?.hasEnabledAutofillServices() == true
+    } else {
+        false
     }
 }
