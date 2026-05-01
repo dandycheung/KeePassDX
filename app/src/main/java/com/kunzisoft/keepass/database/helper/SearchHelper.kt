@@ -55,18 +55,17 @@ object SearchHelper {
         webDomain: String?,
         concreteWebDomain: (searchSubDomains: Boolean, concreteWebDomain: String?) -> Unit
     ) {
-        val domain = webDomain
         val searchSubDomains = searchSubDomains(context)
-        if (domain != null) {
-            // Warning, web domain can contains IP, don't crop in this case
+        if (webDomain != null) {
+            // Warning, the web domain may contain an IP, if so, do not crop it
             if (searchSubDomains
-                || Regex(SearchInfo.WEB_IP_REGEX).matches(domain)) {
+                || Regex(SearchInfo.WEB_IP_REGEX).matches(webDomain)) {
                 concreteWebDomain.invoke(searchSubDomains, webDomain)
             } else {
                 CoroutineScope(Dispatchers.IO).launch {
                     val publicSuffixList = PublicSuffixList(context)
                     val publicSuffix = publicSuffixList
-                        .getPublicSuffixPlusOne(domain).await()
+                        .getPublicSuffixPlusOne(webDomain).await()
                     withContext(Dispatchers.Main) {
                         concreteWebDomain.invoke(false, publicSuffix)
                     }

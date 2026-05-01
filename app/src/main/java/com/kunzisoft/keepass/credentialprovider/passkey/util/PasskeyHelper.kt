@@ -372,7 +372,7 @@ object PasskeyHelper {
             ClientDataBuildResponse(
                 type = ClientDataBuildResponse.Type.GET,
                 challenge = usageParameters.publicKeyCredentialRequestOptions.challenge,
-                origin = appToCheck.checkAppOrigin(appOrigin)
+                origin = appToCheck.checkAndroidOrigin(appOrigin)
             )
         }
     }

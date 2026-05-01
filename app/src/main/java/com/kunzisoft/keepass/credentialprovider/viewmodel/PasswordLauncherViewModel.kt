@@ -167,7 +167,8 @@ class PasswordLauncherViewModel(application: Application): CredentialLauncherVie
     ) {
         withContext(Dispatchers.IO) {
             // Check AppOrigin
-            if (passwordInfo.appOrigin != mAppOrigin)
+            val origin = passwordInfo.appOrigin
+            if (origin == null || origin.isTheSameOriginThan(mAppOrigin).not())
                 throw SecurityException("Password origin do not match")
             else {
                 val passwordCredential = PasswordCredential(
