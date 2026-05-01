@@ -30,7 +30,7 @@ class AutoType : Parcelable {
     var enabled = true
     var obfuscationOptions = OBF_OPT_NONE
     var defaultSequence = ""
-    private var windowSeqPairs = ArrayList<AutoTypeItem>()
+    private var windowSeqPairs = mutableListOf<AutoTypeItem>()
 
     constructor()
 

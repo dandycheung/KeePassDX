@@ -1392,7 +1392,7 @@ open class DatabaseTaskNotificationService : LockNotificationService(), Progress
         const val DATA_BYTES = "DATA_BYTES"
 
         fun getListNodesFromBundle(database: ContextualDatabase, bundle: Bundle): List<Node> {
-            val nodesAction = ArrayList<Node>()
+            val nodesAction = mutableListOf<Node>()
             bundle.getParcelableList<NodeId<*>>(GROUPS_ID_KEY)?.forEach {
                 database.getGroupById(it)?.let { groupRetrieve ->
                     nodesAction.add(groupRetrieve)

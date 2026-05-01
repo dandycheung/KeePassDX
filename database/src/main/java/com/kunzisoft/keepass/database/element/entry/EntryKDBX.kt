@@ -64,7 +64,7 @@ class EntryKDBX : EntryVersioned<UUID, UUID, GroupKDBX, EntryKDBX>, NodeKDBXInte
     override var previousParentGroup: UUID = DatabaseVersioned.UUID_ZERO
     var qualityCheck = true
     var autoType = AutoType()
-    var history = ArrayList<EntryKDBX>()
+    var history = mutableListOf<EntryKDBX>()
     var additional = ""
 
     override var expires: Boolean = false
@@ -315,7 +315,7 @@ class EntryKDBX : EntryVersioned<UUID, UUID, GroupKDBX, EntryKDBX>, NodeKDBXInte
      * It's a list because history labels can be defined multiple times
      */
     fun getAttachments(attachmentPool: AttachmentPool, inHistory: Boolean = false): List<Attachment> {
-        val entryAttachmentList = ArrayList<Attachment>()
+        val entryAttachmentList = mutableListOf<Attachment>()
         for ((label, poolId) in binaries) {
             attachmentPool[poolId]?.let { binary ->
                 entryAttachmentList.add(Attachment(label, binary))

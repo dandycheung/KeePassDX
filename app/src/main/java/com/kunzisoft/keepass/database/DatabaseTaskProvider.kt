@@ -374,8 +374,8 @@ class DatabaseTaskProvider(
         newParent: Group?,
         save: Boolean
     ) {
-        val groupsIdToCopy = ArrayList<NodeId<*>>()
-        val entriesIdToCopy = ArrayList<NodeId<UUID>>()
+        val groupsIdToCopy = mutableListOf<NodeId<*>>()
+        val entriesIdToCopy = mutableListOf<NodeId<UUID>>()
         nodesPaste.forEach { nodeVersioned ->
             when (nodeVersioned.type) {
                 Type.GROUP -> {

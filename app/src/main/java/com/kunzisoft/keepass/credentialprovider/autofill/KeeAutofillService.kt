@@ -275,8 +275,8 @@ class KeeAutofillService : AutofillService() {
                     // Tell the autofill framework the interest to save credentials
                     if (askToSaveData) {
                         var types: Int = SaveInfo.SAVE_DATA_TYPE_GENERIC
-                        val requiredIds = ArrayList<AutofillId>()
-                        val optionalIds = ArrayList<AutofillId>()
+                        val requiredIds = mutableListOf<AutofillId>()
+                        val optionalIds = mutableListOf<AutofillId>()
 
                         // Only if at least a password
                         parseResult.passwordId?.let { passwordInfo ->

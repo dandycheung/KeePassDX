@@ -7,7 +7,7 @@ import com.kunzisoft.keepass.database.element.Tags
 import com.kunzisoft.keepass.database.element.icon.IconImageStandard
 import com.kunzisoft.keepass.database.element.icon.IconImageStandard.Companion.FOLDER_ID
 import com.kunzisoft.keepass.utils.readParcelableCompat
-import java.util.*
+import java.util.UUID
 
 class GroupInfo : NodeInfo {
 

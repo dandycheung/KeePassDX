@@ -320,7 +320,7 @@ class Entry : Node, EntryVersionedInterface<Group> {
      * @return Map of label/value
      */
     fun getExtraFields(): List<Field> {
-        val extraFields = ArrayList<Field>()
+        val extraFields = mutableListOf<Field>()
         entryKDBX?.let {
             it.doForEachDecodedCustomField { field ->
                 extraFields.add(field)
@@ -391,7 +391,7 @@ class Entry : Node, EntryVersionedInterface<Group> {
     }
 
     fun getAttachments(attachmentPool: AttachmentPool, inHistory: Boolean = false): List<Attachment> {
-        val attachments = ArrayList<Attachment>()
+        val attachments = mutableListOf<Attachment>()
         entryKDB?.getAttachment(attachmentPool)?.let {
             attachments.add(it)
         }
@@ -421,9 +421,9 @@ class Entry : Node, EntryVersionedInterface<Group> {
         entryKDBX?.putAttachment(attachment, attachmentPool)
     }
 
-    fun getHistory(): ArrayList<Entry> {
-        val history = ArrayList<Entry>()
-        val entryKDBXHistory = entryKDBX?.history ?: ArrayList()
+    fun getHistory(): List<Entry> {
+        val history = mutableListOf<Entry>()
+        val entryKDBXHistory = entryKDBX?.history ?: listOf()
         for (entryHistory in entryKDBXHistory) {
             history.add(Entry(entryHistory))
         }

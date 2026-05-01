@@ -53,7 +53,6 @@ import com.kunzisoft.keepass.settings.PreferencesUtil
 import com.kunzisoft.keepass.timeout.ClipboardHelper
 import com.kunzisoft.keepass.view.setTextSize
 import com.kunzisoft.keepass.view.strikeOut
-import java.util.LinkedList
 
 /**
  * Create node list adapter with contextMenu or not
@@ -90,7 +89,7 @@ class NodesAdapter (
     private var mOldVirtualGroup = false
     private var mVirtualGroup = false
 
-    private var mActionNodesList = LinkedList<Node>()
+    private var mActionNodesList = mutableListOf<Node>()
     private var mNodeClickCallback: NodeClickCallback? = null
     private var mClipboardHelper = ClipboardHelper(context)
 

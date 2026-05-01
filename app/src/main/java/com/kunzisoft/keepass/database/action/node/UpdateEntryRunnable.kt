@@ -21,9 +21,7 @@ package com.kunzisoft.keepass.database.action.node
 
 import android.content.Context
 import com.kunzisoft.keepass.database.ContextualDatabase
-import com.kunzisoft.keepass.database.element.Attachment
 import com.kunzisoft.keepass.database.element.Entry
-import com.kunzisoft.keepass.database.element.node.Node
 import com.kunzisoft.keepass.hardware.HardwareKey
 
 class UpdateEntryRunnable(
@@ -51,7 +49,7 @@ class UpdateEntryRunnable(
             // Build oldest attachments
             val oldEntryAttachments = mOldEntry.getAttachments(database.attachmentPool, true)
             val newEntryAttachments = mNewEntry.getAttachments(database.attachmentPool, true)
-            val attachmentsToRemove = ArrayList<Attachment>(oldEntryAttachments)
+            val attachmentsToRemove = oldEntryAttachments.toMutableList()
             // Not use equals because only check name
             newEntryAttachments.forEach { newAttachment ->
                 oldEntryAttachments.forEach { oldAttachment ->
@@ -84,11 +82,6 @@ class UpdateEntryRunnable(
             // If we fail to save, back out changes to global structure
             database.updateEntry(mOldEntry)
         }
-
-        val oldNodesReturn = ArrayList<Node>()
-        oldNodesReturn.add(mOldEntry)
-        val newNodesReturn = ArrayList<Node>()
-        newNodesReturn.add(mNewEntry)
-        return ActionNodesValues(oldNodesReturn, newNodesReturn)
+        return ActionNodesValues(listOf(mOldEntry), listOf(mNewEntry))
     }
 }

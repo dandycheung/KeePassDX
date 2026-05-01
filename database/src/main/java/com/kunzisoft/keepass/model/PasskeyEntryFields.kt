@@ -127,7 +127,7 @@ object PasskeyEntryFields {
      * Remove parameters fields use to generate auto fields
      */
     fun generateAutoFields(fieldsToParse: List<Field>): MutableList<Field> {
-        val newCustomFields: MutableList<Field> = ArrayList(fieldsToParse)
+        val newCustomFields: MutableList<Field> = fieldsToParse.toMutableList()
         // Remove parameter fields
         val usernameField = Field(FIELD_USERNAME)
         val privateKeyField = Field(FIELD_PRIVATE_KEY)

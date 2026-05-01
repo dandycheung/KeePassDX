@@ -448,7 +448,7 @@ object OtpEntryFields {
             if (username.isEmpty())
                 username = otpElement.name
             // Add OTP field
-            val mutableCustomFields = customFields as ArrayList<Field>
+            val mutableCustomFields = customFields
             val otpField = buildOtpField(otpElement, null, null)
             if (mutableCustomFields.contains(otpField)) {
                 mutableCustomFields.remove(otpField)
@@ -464,7 +464,7 @@ object OtpEntryFields {
      * Remove parameters fields use to generate auto fields
      */
     fun generateAutoFields(fieldsToParse: List<Field>): MutableList<Field> {
-        val newCustomFields: MutableList<Field> = ArrayList(fieldsToParse)
+        val newCustomFields: MutableList<Field> = fieldsToParse.toMutableList()
         // Remove parameter fields
         val otpField = Field(OTP_FIELD)
         val totpSeedField = Field(TOTP_SEED_FIELD)

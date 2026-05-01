@@ -23,7 +23,6 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.kunzisoft.keepass.utils.readStringParcelableMap
 import com.kunzisoft.keepass.utils.writeStringParcelableMap
-import java.util.*
 
 class CustomData : Parcelable {
 

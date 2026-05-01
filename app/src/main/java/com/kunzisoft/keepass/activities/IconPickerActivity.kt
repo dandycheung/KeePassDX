@@ -73,7 +73,7 @@ class IconPickerActivity : DatabaseLockActivity() {
 
     private val iconPickerViewModel: IconPickerViewModel by viewModels()
     private var mCustomIconsSelectionMode = false
-    private var mIconsSelected: List<IconImageCustom> = ArrayList()
+    private var mIconsSelected: List<IconImageCustom> = emptyList()
 
     private var mExternalFileHelper: ExternalFileHelper? = null
 

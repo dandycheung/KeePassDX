@@ -866,7 +866,7 @@ class DatabaseKDBX : DatabaseVersioned<UUID, UUID, GroupKDBX, EntryKDBX> {
     }
 
     fun removeUnlinkedAttachment(binary: BinaryData, clear: Boolean) {
-        val listBinaries = ArrayList<BinaryData>()
+        val listBinaries = mutableListOf<BinaryData>()
         listBinaries.add(binary)
         removeUnlinkedAttachments(listBinaries, clear)
     }
@@ -878,7 +878,7 @@ class DatabaseKDBX : DatabaseVersioned<UUID, UUID, GroupKDBX, EntryKDBX> {
     private fun removeUnlinkedAttachments(binaries: List<BinaryData>, clear: Boolean) {
         // TODO check in icon pool
         // Build binaries to remove with all binaries known
-        val binariesToRemove = ArrayList<BinaryData>()
+        val binariesToRemove = mutableListOf<BinaryData>()
         if (binaries.isEmpty()) {
             attachmentPool.doForEachBinary { _, binary ->
                 binariesToRemove.add(binary)

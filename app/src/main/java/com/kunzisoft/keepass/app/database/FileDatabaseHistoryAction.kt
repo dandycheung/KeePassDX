@@ -91,7 +91,7 @@ class FileDatabaseHistoryAction(private val applicationContext: Context) {
                     PreferencesUtil.hideBrokenLocations(
                         applicationContext)
                 // Show only uri accessible
-                val databaseFileListLoaded = ArrayList<DatabaseFile>()
+                val databaseFileListLoaded = mutableListOf<DatabaseFile>()
                 databaseFileHistoryDao.getAll().forEach { fileDatabaseHistoryEntity ->
                     val fileDatabaseInfo = FileDatabaseInfo(
                         applicationContext,

@@ -286,7 +286,7 @@ open class Database {
         get() = mDatabaseKDBX != null
 
     val availableCompressionAlgorithms: List<CompressionAlgorithm>
-        get() = mDatabaseKDBX?.availableCompressionAlgorithms ?: ArrayList()
+        get() = mDatabaseKDBX?.availableCompressionAlgorithms ?: emptyList()
 
     var compressionAlgorithm: CompressionAlgorithm?
         get() = mDatabaseKDBX?.compressionAlgorithm
@@ -331,7 +331,7 @@ open class Database {
     }
 
     val availableEncryptionAlgorithms: List<EncryptionAlgorithm>
-        get() = mDatabaseKDB?.availableEncryptionAlgorithms ?: mDatabaseKDBX?.availableEncryptionAlgorithms ?: ArrayList()
+        get() = mDatabaseKDB?.availableEncryptionAlgorithms ?: mDatabaseKDBX?.availableEncryptionAlgorithms ?: listOf()
 
     var encryptionAlgorithm: EncryptionAlgorithm?
         get() = mDatabaseKDB?.encryptionAlgorithm ?: mDatabaseKDBX?.encryptionAlgorithm
@@ -342,7 +342,7 @@ open class Database {
         }
 
     val availableKdfEngines: List<KdfEngine>
-        get() = mDatabaseKDB?.kdfAvailableList ?: mDatabaseKDBX?.kdfAvailableList ?: ArrayList()
+        get() = mDatabaseKDB?.kdfAvailableList ?: mDatabaseKDBX?.kdfAvailableList ?: listOf()
 
     val allowKdfModification: Boolean
         get() = availableKdfEngines.size > 1
@@ -550,7 +550,7 @@ open class Database {
 
     val groupNamesNotAllowed: List<String>
         get() {
-            return mDatabaseKDB?.groupNamesNotAllowed ?: ArrayList()
+            return mDatabaseKDB?.groupNamesNotAllowed ?: listOf()
         }
 
     private fun setDatabaseKDB(databaseKDB: DatabaseKDB) {

@@ -17,7 +17,7 @@ import com.kunzisoft.keepass.timeout.TimeoutHelper.NEVER
 
 class DeviceUnlockNotificationService : NotificationService() {
 
-    private lateinit var mTempCipherDao: ArrayList<CipherDatabaseEntity>
+    private lateinit var mTempCipherDao: MutableList<CipherDatabaseEntity>
 
     private var mActionTaskBinder = DeviceUnlockBinder()
 
@@ -57,7 +57,7 @@ class DeviceUnlockNotificationService : NotificationService() {
 
     override fun onCreate() {
         super.onCreate()
-        mTempCipherDao = ArrayList()
+        mTempCipherDao = mutableListOf()
     }
 
     // It's simpler to use pendingIntent to perform REMOVE_DEVICE_UNLOCK_KEY_ACTION

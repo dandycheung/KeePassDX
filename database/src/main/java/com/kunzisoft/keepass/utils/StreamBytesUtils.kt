@@ -27,7 +27,7 @@ import java.io.InputStream
 import java.io.OutputStream
 import java.nio.ByteBuffer
 import java.nio.charset.Charset
-import java.util.*
+import java.util.UUID
 
 /**
  * Read all data of stream and invoke [readBytes] each time the buffer is full or no more data to read.
@@ -319,7 +319,7 @@ private val defaultCharset = Charset.forName("UTF-8")
 
 private val CRLFbuf = byteArrayOf(0x0D, 0x0A)
 private val CRLF = String(CRLFbuf)
-private val SEP = System.getProperty("line.separator")
+private val SEP = System.lineSeparator()
 private val REPLACE = SEP != CRLF
 
 fun bytesToString(buf: ByteArray, replaceCRLF: Boolean = true): String {
@@ -331,7 +331,7 @@ fun bytesToString(buf: ByteArray, replaceCRLF: Boolean = true): String {
     // Get string
     var jstring = String(buf, 0, len, defaultCharset)
     if (replaceCRLF && REPLACE) {
-        jstring = jstring.replace(CRLF, SEP!!)
+        jstring = jstring.replace(CRLF, SEP)
     }
     return jstring
 }
@@ -393,7 +393,7 @@ fun writeStringToStream(outputStream: OutputStream, string: String?): Int {
     }
 
     if (REPLACE) {
-        str = str.replace(SEP!!, CRLF)
+        str = str.replace(SEP, CRLF)
     }
 
     val initial = str.toByteArray(defaultCharset)
