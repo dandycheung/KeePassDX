@@ -403,7 +403,7 @@ class EntryActivity : DatabaseLockActivity() {
                     when (uVState) {
                         is UserVerificationViewModel.UVState.Loading -> {}
                         is UserVerificationViewModel.UVState.OnUserVerificationCanceled -> {
-                            coordinatorLayout?.showError(uVState.error, R.id.entry_edit_fab)
+                            coordinatorLayout?.showError(uVState.error, R.id.entry_content_tab)
                             mUserVerificationViewModel.onUserVerificationReceived()
                         }
                         is UserVerificationViewModel.UVState.OnUserVerificationSucceeded -> {
