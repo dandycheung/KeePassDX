@@ -137,7 +137,7 @@ class AppOriginTest {
         val app2 = AppOrigin(false)
         
         // Both empty
-        assertTrue(app1.isTheSameAndroidOriginThan(app2))
+        assertFalse(app1.isTheSameAndroidOriginThan(app2))
 
         val common = AndroidOrigin(packageAndroid1, fingerprint1)
         app1.addAndroidOrigin(common)

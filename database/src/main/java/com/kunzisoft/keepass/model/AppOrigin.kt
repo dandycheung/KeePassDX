@@ -100,38 +100,40 @@ data class AppOrigin(
     /**
      * Checks if this [AppOrigin] contains the same Android origin as another [AppOrigin].
      * @param other The other [AppOrigin] to compare with.
-     * @return True if they have at least one common [AndroidOrigin] or both are empty.
+     * @return True if they have at least one common [AndroidOrigin].
      */
-    fun isTheSameAndroidOriginThan(other: AppOrigin?): Boolean {
-        if (this.androidOrigins.isEmpty() && (other == null || other.androidOrigins.isEmpty()))
-            return true
+    fun isTheSameAndroidOriginThan(other: AppOrigin): Boolean {
         return androidOriginIn(other) != null
     }
 
     /**
      * Checks if this [AppOrigin] contains the same web origin as another [AppOrigin].
      * @param other The other [AppOrigin] to compare with.
-     * @return True if they have at least one common [WebOrigin] or both are empty.
+     * @return True if they have at least one common [WebOrigin].
      */
-    fun isTheSameWebOriginThan(other: AppOrigin?): Boolean {
-        if (this.webOrigins.isEmpty() && (other == null || other.webOrigins.isEmpty()))
-            return true
+    fun isTheSameWebOriginThan(other: AppOrigin): Boolean {
         return this.webOrigins.any { webOrigin ->
-            other?.webOrigins?.any { it.origin == webOrigin.origin } == true
+            other.webOrigins.any { it.origin == webOrigin.origin }
         }
     }
 
     /**
-     * Checks if this [AppOrigin] contains both the same Android and web origins as another [AppOrigin].
+     * Checks if this [AppOrigin] matches another [AppOrigin] by comparing their Android or web origins.
+     *
+     * The matching logic follows these rules:
+     * - If either instance has Android origins, they must share at least one common [AndroidOrigin].
+     * - If neither instance has Android origins, they must share at least one common [WebOrigin]
+     *
      * @param other The other [AppOrigin] to compare with.
-     * @return True if both Android and Web origins match.
+     * @return True if the origins match according to the rules, false otherwise.
      */
     fun isTheSameOriginThan(other: AppOrigin?): Boolean {
-        if (this.isTheSameAndroidOriginThan(other).not())
-            return false
-        if (this.isTheSameWebOriginThan(other).not())
-            return false
-        return true
+        if (this.androidOrigins.isNotEmpty() || (other != null && other.androidOrigins.isNotEmpty())) {
+            return other != null && this.isTheSameAndroidOriginThan(other)
+        }
+        if (this.webOrigins.isNotEmpty() || (other != null && other.webOrigins.isNotEmpty()))
+            return other != null && this.isTheSameWebOriginThan(other)
+        return false
     }
 
     /**
