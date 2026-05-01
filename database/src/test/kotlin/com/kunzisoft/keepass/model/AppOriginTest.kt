@@ -161,7 +161,7 @@ class AppOriginTest {
         val app2 = AppOrigin(false)
 
         // Both empty
-        assertTrue(app1.isTheSameWebOriginThan(app2))
+        assertFalse(app1.isTheSameWebOriginThan(app2))
 
         val common = WebOrigin(webHttps)
         app1.addWebOrigin(common)
