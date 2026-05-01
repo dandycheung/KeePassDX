@@ -29,7 +29,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.activity.result.ActivityResultLauncher
@@ -93,7 +92,6 @@ import java.util.UUID
 
 class EntryActivity : DatabaseLockActivity() {
 
-    private var footer: ViewGroup? = null
     private var container: View? = null
     private var coordinatorLayout: CoordinatorLayout? = null
     private var collapsingToolbarLayout: CollapsingToolbarLayout? = null
@@ -146,7 +144,6 @@ class EntryActivity : DatabaseLockActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         // Get views
-        footer = findViewById(R.id.activity_entry_footer)
         container = findViewById(R.id.activity_entry_container)
         coordinatorLayout = findViewById(R.id.toolbar_coordinator)
         collapsingToolbarLayout = findViewById(R.id.toolbar_layout)
@@ -406,7 +403,7 @@ class EntryActivity : DatabaseLockActivity() {
                     when (uVState) {
                         is UserVerificationViewModel.UVState.Loading -> {}
                         is UserVerificationViewModel.UVState.OnUserVerificationCanceled -> {
-                            coordinatorLayout?.showError(uVState.error, R.id.activity_entry_footer)
+                            coordinatorLayout?.showError(uVState.error, R.id.entry_edit_fab)
                             mUserVerificationViewModel.onUserVerificationReceived()
                         }
                         is UserVerificationViewModel.UVState.OnUserVerificationSucceeded -> {

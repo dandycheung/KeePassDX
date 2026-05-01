@@ -119,7 +119,6 @@ class EntryEditActivity : DatabaseLockActivity(),
         ReplaceFileDialogFragment.ActionChooseListener {
 
     // Views
-    private var footer: View? = null
     private var container: View? = null
     private var coordinatorLayout: CoordinatorLayout? = null
     private var scrollView: NestedScrollView? = null
@@ -170,7 +169,6 @@ class EntryEditActivity : DatabaseLockActivity(),
 
         // Bottom Bar
         entryEditAddToolBar = findViewById(R.id.entry_edit_bottom_bar)
-        footer = findViewById(R.id.activity_entry_edit_footer)
         container = findViewById(R.id.activity_entry_edit_container)
         coordinatorLayout = findViewById(R.id.entry_edit_coordinator_layout)
         scrollView = findViewById(R.id.entry_edit_scroll)
