@@ -721,4 +721,10 @@
     <string name="menu_user_verification_disabled">Kasutaja verifitseerimine on lülitatud välja</string>
     <string name="education_user_verification_title">Verifitseerimine turvatundlike toimingute puhul</string>
     <string name="education_user_verification_summary">Saad muuta kasutaja verifitseerimist sessioonikohaselt.\n\n„Kasutaja verifitseerimine on lülitatud sisse“ - kaitstud väljade ja andmebaasiseadistuste puhul on vajalik täiendav tuvastus.\n„Kasutaja verifitseerimine on lülitatud välja“ - saad muuta kõiki andmebaasis olevaid andmeid ilma täiendava tuvastuseta.</string>
+    <string name="content_description_share_url">Jagamise aadress</string>
+    <string name="show_tags_title">Näita silte</string>
+    <string name="show_tags_summary">Sildid on kuvatud kirjete loendis</string>
+    <string name="benchmark_calculation">Arvutamise kestus: %1$s sek</string>
+    <string name="benchmarking">Arvutan võrdlusanalüüsi jaoks…</string>
+    <string name="keyboard_share_browser">Jaga %1$s brauserist KeePassDX-i</string>
 </resources>
