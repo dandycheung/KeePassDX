@@ -749,4 +749,10 @@
     <string name="user_verification_database_credential">Introduce los primeros cuatro caracteres de la contraseña de tu base de datos</string>
     <string name="first_chars">Primeros caracteres</string>
     <string name="check">Verificar</string>
+    <string name="content_description_share_url">Compartir URL</string>
+    <string name="show_tags_title">Mostrar etiquetas</string>
+    <string name="show_tags_summary">Mostrar las etiquetas en la lista de entradas</string>
+    <string name="benchmark_calculation">Calcular durante %1$s s</string>
+    <string name="benchmarking">Realizando prueba de rendimiento…</string>
+    <string name="keyboard_share_browser">Compartir desde %1$s a KeePassDX</string>
 </resources>
