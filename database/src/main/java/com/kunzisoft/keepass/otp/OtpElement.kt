@@ -22,11 +22,11 @@ package com.kunzisoft.keepass.otp
 import com.kunzisoft.keepass.model.OtpModel
 import com.kunzisoft.keepass.utils.CharArrayUtil.removeSpaceChars
 import com.kunzisoft.keepass.utils.CharArrayUtil.toUtf8ByteArray
+import com.kunzisoft.keepass.utils.clear
 import org.apache.commons.codec.binary.Base32
 import org.apache.commons.codec.binary.Base64
 import org.apache.commons.codec.binary.Hex
 import java.nio.CharBuffer
-import java.util.Arrays
 import java.util.Locale
 import java.util.regex.Pattern
 
@@ -157,7 +157,7 @@ data class OtpElement(var otpModel: OtpModel = OtpModel()) {
             val secretChars = replaceBase32Chars(secret)
             val secretBytes = secretChars.toUtf8ByteArray()
             otpModel.secret = Base32().decode(secretBytes)
-            Arrays.fill(secretBytes, 0.toByte())
+            secretBytes.clear()
         } else
             throw IllegalArgumentException()
     }
@@ -167,7 +167,7 @@ data class OtpElement(var otpModel: OtpModel = OtpModel()) {
         if (isValidBase64(secret)) {
             val secretBytes = secret.toUtf8ByteArray()
             otpModel.secret = Base64.decodeBase64(secretBytes)
-            Arrays.fill(secretBytes, 0.toByte())
+            secretBytes.clear()
         } else
             throw IllegalArgumentException()
     }
