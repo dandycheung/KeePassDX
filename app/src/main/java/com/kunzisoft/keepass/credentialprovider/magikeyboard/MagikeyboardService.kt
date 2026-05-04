@@ -25,6 +25,7 @@ import android.content.Intent
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.inputmethodservice.InputMethodService
 import android.media.AudioManager
+import android.os.Build
 import android.provider.Settings
 import android.view.Gravity
 import android.view.HapticFeedbackConstants
@@ -54,6 +55,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kunzisoft.keepass.R
 import com.kunzisoft.keepass.adapters.KeyboardEntriesAdapter
 import com.kunzisoft.keepass.adapters.KeyboardFieldsAdapter
+import com.kunzisoft.keepass.credentialprovider.EntrySelectionHelper.buildIcon
 import com.kunzisoft.keepass.credentialprovider.TypeMode
 import com.kunzisoft.keepass.credentialprovider.activity.EntrySelectionLauncherActivity
 import com.kunzisoft.keepass.credentialprovider.autofill.isKeeAutofillActivated
@@ -181,6 +183,14 @@ class MagikeyboardService : InputMethodService(),
                             getEntryInfo(it)?.let { entry ->
                                 KeyboardEntriesAdapter.KeyboardEntry(
                                     id = entry.id,
+                                    icon = mDatabase?.let { database ->
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                            entry.buildIcon(
+                                                this@MagikeyboardService,
+                                                database
+                                            )
+                                        } else null
+                                    },
                                     title = entry.getVisualTitle(),
                                     subtitle = entry.username
                                 )
