@@ -35,7 +35,7 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:minHeight="24dp"
-        android:background="@color/grey_blue_slighter"
+        android:background="@color/green"
         android:orientation="horizontal">
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/magikeyboard_app_id_icon"
@@ -75,7 +75,7 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:minHeight="24dp"
-        android:background="@color/grey_blue_slighter"
+        android:background="@color/green"
         android:orientation="horizontal">
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/magikeyboard_share_browser_icon"
