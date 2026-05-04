@@ -65,13 +65,9 @@ abstract class StylishActivity : AppCompatActivity() {
         }
     }
 
-    open fun applyCustomStyle(): Boolean {
-        return true
-    }
+    open fun applyCustomStyle(): Boolean = true
 
-    open fun finishActivityIfReloadRequested(): Boolean {
-        return false
-    }
+    open fun finishActivityIfReloadRequested(): Boolean = false
 
     open fun reloadActivity() {
         if (!finishActivityIfReloadRequested()) {

@@ -31,6 +31,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.lifecycleScope
 import com.kunzisoft.keepass.R
 import com.kunzisoft.keepass.activities.dialogs.DeleteNodesDialogFragment
 import com.kunzisoft.keepass.activities.dialogs.PasswordEncodingDialogFragment
@@ -54,6 +55,8 @@ import com.kunzisoft.keepass.utils.registerLockReceiver
 import com.kunzisoft.keepass.utils.unregisterLockReceiver
 import com.kunzisoft.keepass.view.showActionErrorIfNeeded
 import com.kunzisoft.keepass.viewmodels.NodesViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.UUID
 
 abstract class DatabaseLockActivity : DatabaseModeActivity(),
@@ -89,6 +92,17 @@ abstract class DatabaseLockActivity : DatabaseModeActivity(),
         }
 
         mExitLock = false
+
+        // Start timeout for database retrieval
+        lifecycleScope.launch {
+            if (finishActivityIfReloadRequested()) {
+                delay(3000)
+                if (mDatabase?.loaded != true) {
+                    Log.w(TAG, "Database not loaded after 3 seconds, finishing activity")
+                    finish()
+                }
+            }
+        }
     }
 
     override fun onDatabaseRetrieved(database: ContextualDatabase) {

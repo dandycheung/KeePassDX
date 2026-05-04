@@ -1,10 +1,10 @@
  * Tags in list view #1539 #2144
  * Search by Tags #1338 #2280
- * Hidden tag history #2374 #1405
+ * Hidden Tags history #2374 #1405
  * KDF Benchmark #784
  * Improved accessibility #2475
  * Improved security #2481 #2482 #2483 #2484 #2485 #2487 #2488 #2489 #2480
- * V2 KeyFile generation #1934
- * Filter browser appId in Magikeyboard #2466 #2394 #2400 #2317
- * Fix screenshot mode and history save #2407 #2471
- * Small fixes #2476 #2369 #1911 #2469 #2477 #2512 #2511 #2515
+ * Key file generation V2 #1934
+ * Filter browser IDs in the Magikeyboard #2466 #2394 #2400 #2317
+ * Fix screenshot mode and history #2407 #2471
+ * Minor fixes #2476 #2369 #1911 #2469 #2477 #2512 #2511 #2515 #2277
