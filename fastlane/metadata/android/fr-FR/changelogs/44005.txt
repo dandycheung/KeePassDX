@@ -7,4 +7,4 @@
  * Génération de fichier de clé V2 #1934
  * Filtre les IDs navigateurs (Magiclavier) #2466 #2394 #2400 #2317
  * Correctif capture d'écran et historique #2407 #2471
- * Petites corrections #2476 #2369 #1911 #2469 #2477 #2512 #2511 #2515 #2277 #2520
+ * Petites corrections #2476 #2369 #1911 #2469 #2477 #2512 #2511 #2515 #2277 #2520 #2522

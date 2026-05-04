@@ -29,9 +29,11 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import androidx.annotation.ColorInt
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.view.ActionMode
 import androidx.appcompat.view.SupportMenuInflater
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import com.google.android.material.appbar.MaterialToolbar
 import com.kunzisoft.keepass.R
 
@@ -46,6 +48,9 @@ class ToolbarAction @JvmOverloads constructor(
     private var isOpen = false
 
     init {
+        val backgroundTintList = AppCompatResources.getColorStateList(context, R.color.surface_selector)
+        ViewCompat.setBackgroundTintList(this, backgroundTintList)
+
         ContextCompat.getDrawable(context, R.drawable.ic_close_white_24dp)?.let { closeDrawable ->
             val typedValue = TypedValue()
             context.theme.resolveAttribute(R.attr.colorOnSurface, typedValue, true)
