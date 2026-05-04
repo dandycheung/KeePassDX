@@ -754,4 +754,10 @@
     <string name="menu_user_verification_disabled">ユーザー検証を無効化</string>
     <string name="education_user_verification_title">高機密性操作の検証</string>
     <string name="education_user_verification_summary">セッションのユーザー検証モードを変更します。\n\n”ユーザー検証を有効化” は保護項目とデータベース設定に対する操作を検証します。\n”ユーザー検証を無効化”は無検証でデータベース内のあらゆるデータが変更できます。</string>
+    <string name="content_description_share_url">URLを共有</string>
+    <string name="show_tags_title">タグを表示</string>
+    <string name="show_tags_summary">エントリの一覧にタグを表示</string>
+    <string name="benchmark_calculation">%1$s 秒で算出</string>
+    <string name="benchmarking">測定中です…</string>
+    <string name="keyboard_share_browser">%1$sからKeePassDXへ共有</string>
 </resources>
