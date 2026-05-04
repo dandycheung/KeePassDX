@@ -54,10 +54,12 @@ class KeyboardEntriesAdapter(context: Context) : RecyclerView.Adapter<KeyboardEn
             text = subtitle
         }
         holder.icon.apply {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && entry.icon != null) {
-                setImageIcon(entry.icon)
+            val icon = entry.icon
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && icon != null) {
+                isVisible = true
+                setImageIcon(icon)
             } else {
-                setImageResource(R.drawable.ic_arrow_right_green_24dp)
+                isVisible = false
             }
         }
         holder.itemView.isSelected = entry == selectedEntry
