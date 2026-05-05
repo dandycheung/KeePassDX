@@ -285,7 +285,8 @@ class SetMainCredentialDialogFragment : DatabaseDialogFragment() {
             passwordRepeatView.text.getChars(0, passwordRepeatView.length(), confPassword, 0)
 
             // Verify that passwords match
-            if (mMasterPassword == null || !mMasterPassword!!.contentEquals(confPassword)) {
+            val passwordsMatch = mMasterPassword?.contentEquals(confPassword) ?: confPassword.isEmpty()
+            if (!passwordsMatch) {
                 error = true
                 // Passwords do not match
                 passwordRepeatTextInputLayout.error = getString(R.string.error_pass_match)

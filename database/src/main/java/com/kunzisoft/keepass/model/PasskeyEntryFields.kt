@@ -1,6 +1,8 @@
 package com.kunzisoft.keepass.model
 
 import com.kunzisoft.keepass.database.element.Field
+import com.kunzisoft.keepass.database.element.containsWhen
+import com.kunzisoft.keepass.database.element.removeFirstWhen
 import com.kunzisoft.keepass.database.element.security.ProtectedString
 import com.kunzisoft.keepass.database.element.security.ProtectedString.Companion.toBooleanCompat
 import com.kunzisoft.keepass.database.element.security.ProtectedString.Companion.toFieldValue
@@ -129,28 +131,21 @@ object PasskeyEntryFields {
     fun generateAutoFields(fieldsToParse: List<Field>): MutableList<Field> {
         val newCustomFields: MutableList<Field> = fieldsToParse.toMutableList()
         // Remove parameter fields
-        val usernameField = Field(FIELD_USERNAME)
-        val privateKeyField = Field(FIELD_PRIVATE_KEY)
-        val credentialIdField = Field(FIELD_CREDENTIAL_ID)
-        val userHandleField = Field(FIELD_USER_HANDLE)
-        val relyingPartyField = Field(FIELD_RELYING_PARTY)
-        val backupEligibilityField = Field(FIELD_FLAG_BE)
-        val backupStateField = Field(FIELD_FLAG_BS)
-        newCustomFields.remove(usernameField)
-        newCustomFields.remove(privateKeyField)
-        newCustomFields.remove(credentialIdField)
-        newCustomFields.remove(userHandleField)
-        newCustomFields.remove(relyingPartyField)
-        newCustomFields.remove(backupEligibilityField)
-        newCustomFields.remove(backupStateField)
+        newCustomFields.removeFirstWhen(FIELD_USERNAME)
+        newCustomFields.removeFirstWhen(FIELD_PRIVATE_KEY)
+        newCustomFields.removeFirstWhen(FIELD_CREDENTIAL_ID)
+        newCustomFields.removeFirstWhen(FIELD_USER_HANDLE)
+        newCustomFields.removeFirstWhen(FIELD_RELYING_PARTY)
+        newCustomFields.removeFirstWhen(FIELD_FLAG_BE)
+        newCustomFields.removeFirstWhen(FIELD_FLAG_BS)
         // Empty auto generated Passkey field
-        if (fieldsToParse.contains(usernameField)
-            || fieldsToParse.contains(privateKeyField)
-            || fieldsToParse.contains(credentialIdField)
-            || fieldsToParse.contains(userHandleField)
-            || fieldsToParse.contains(relyingPartyField)
-            || fieldsToParse.contains(backupEligibilityField)
-            || fieldsToParse.contains(backupStateField)
+        if (fieldsToParse.containsWhen(FIELD_USERNAME)
+            || fieldsToParse.containsWhen(FIELD_PRIVATE_KEY)
+            || fieldsToParse.containsWhen(FIELD_CREDENTIAL_ID)
+            || fieldsToParse.containsWhen(FIELD_USER_HANDLE)
+            || fieldsToParse.containsWhen(FIELD_RELYING_PARTY)
+            || fieldsToParse.containsWhen(FIELD_FLAG_BE)
+            || fieldsToParse.containsWhen(FIELD_FLAG_BS)
         )
             newCustomFields.add(
                 Field(

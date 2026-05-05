@@ -141,6 +141,10 @@ class EntryInfo : NodeInfo {
         passkey?.clear()
     }
 
+    fun containsOtpToken(): Boolean {
+        return containsCustomField(OTP_TOKEN_FIELD)
+    }
+
     fun getOtpToken(): CharArray? {
         return otpModel?.let {
             OtpElement(it).token
@@ -159,9 +163,7 @@ class EntryInfo : NodeInfo {
 
     fun getGeneratedFieldValue(label: String): CharArray? {
         if (label == OTP_TOKEN_FIELD) {
-            otpModel?.let {
-                return OtpElement(it).token
-            }
+            return getOtpToken()
         }
         return customFields.lastOrNull { it.name == label }?.protectedValue?.charArrayValue
     }

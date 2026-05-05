@@ -25,6 +25,7 @@ import android.content.Intent
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.inputmethodservice.InputMethodService
 import android.media.AudioManager
+import android.os.Build
 import android.provider.Settings
 import android.view.Gravity
 import android.view.HapticFeedbackConstants
@@ -54,6 +55,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kunzisoft.keepass.R
 import com.kunzisoft.keepass.adapters.KeyboardEntriesAdapter
 import com.kunzisoft.keepass.adapters.KeyboardFieldsAdapter
+import com.kunzisoft.keepass.credentialprovider.EntrySelectionHelper.buildIcon
 import com.kunzisoft.keepass.credentialprovider.TypeMode
 import com.kunzisoft.keepass.credentialprovider.activity.EntrySelectionLauncherActivity
 import com.kunzisoft.keepass.credentialprovider.autofill.isKeeAutofillActivated
@@ -64,7 +66,6 @@ import com.kunzisoft.keepass.database.element.node.NodeIdUUID
 import com.kunzisoft.keepass.database.helper.SearchHelper
 import com.kunzisoft.keepass.model.EntryInfo
 import com.kunzisoft.keepass.model.SearchInfo
-import com.kunzisoft.keepass.otp.OtpEntryFields.OTP_TOKEN_FIELD
 import com.kunzisoft.keepass.services.ClipboardEntryNotificationService
 import com.kunzisoft.keepass.services.KeyboardEntryNotificationService
 import com.kunzisoft.keepass.settings.PreferencesUtil
@@ -181,6 +182,14 @@ class MagikeyboardService : InputMethodService(),
                             getEntryInfo(it)?.let { entry ->
                                 KeyboardEntriesAdapter.KeyboardEntry(
                                     id = entry.id,
+                                    icon = mDatabase?.let { database ->
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                            entry.buildIcon(
+                                                this@MagikeyboardService,
+                                                database
+                                            )
+                                        } else null
+                                    },
                                     title = entry.getVisualTitle(),
                                     subtitle = entry.username
                                 )
@@ -431,12 +440,12 @@ class MagikeyboardService : InputMethodService(),
                 entryInfoKey?.password?.let { password ->
                     currentInputConnection.commitText(String(password), 1)
                 }
-                val otpFieldExists = entryInfoKey?.containsCustomField(OTP_TOKEN_FIELD) ?: false
+                val otpFieldExists = entryInfoKey?.containsOtpToken() ?: false
                 actionGoAutomatically(!otpFieldExists)
             }
             KEY_OTP -> {
                 getEntryInfo()?.let { entryInfo ->
-                    entryInfo.getGeneratedFieldValue(OTP_TOKEN_FIELD)?.let {
+                    entryInfo.getOtpToken()?.let {
                         currentInputConnection.commitText(String(it), 1)
                     }
                 }
@@ -444,7 +453,7 @@ class MagikeyboardService : InputMethodService(),
             }
             KEY_OTP_ALT -> {
                 getEntryInfo()?.let { entryInfo ->
-                    val otpToken = entryInfo.getGeneratedFieldValue(OTP_TOKEN_FIELD)?.copyOf()
+                    val otpToken = entryInfo.getOtpToken()?.copyOf()
                     if (otpToken != null && otpToken.isNotEmpty()) {
                         // Cut to fill each digit separatelyKeyEvent.KEYCODE_TAB
                         otpToken.forEachIndexed { index, char ->

@@ -61,7 +61,6 @@ import java.io.IOException
 import java.nio.charset.Charset
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
-import java.util.Arrays
 import java.util.UUID
 import javax.crypto.Mac
 import kotlin.math.min
@@ -653,7 +652,7 @@ class DatabaseKDBX : DatabaseVersioned<UUID, UUID, GroupKDBX, EntryKDBX> {
             } catch (_: NoSuchAlgorithmException) {
                 throw IOException("No SHA-512 implementation")
             } finally {
-                Arrays.fill(cmpKey, 0.toByte())
+                cmpKey.clear()
                 transformedMasterKey.clear()
             }
         }
@@ -692,11 +691,11 @@ class DatabaseKDBX : DatabaseVersioned<UUID, UUID, GroupKDBX, EntryKDBX> {
                 pos += copy
                 r++
 
-                Arrays.fill(part, 0.toByte())
+                part.clear()
             }
         }
 
-        Arrays.fill(hash, 0.toByte())
+        hash.clear()
         return ret
     }
 

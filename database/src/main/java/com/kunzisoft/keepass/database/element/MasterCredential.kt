@@ -26,6 +26,7 @@ import android.util.Xml
 import com.kunzisoft.encrypt.HashManager
 import com.kunzisoft.keepass.database.element.binary.BinaryData.Companion.BASE64_FLAG
 import com.kunzisoft.keepass.hardware.HardwareKey
+import com.kunzisoft.keepass.utils.CodecUtil
 import com.kunzisoft.keepass.utils.StringUtil.removeSpaceChars
 import com.kunzisoft.keepass.utils.StringUtil.toHexString
 import com.kunzisoft.keepass.utils.clear
@@ -35,7 +36,6 @@ import com.kunzisoft.keepass.utils.readEnum
 import com.kunzisoft.keepass.utils.writeByteArrayCompat
 import com.kunzisoft.keepass.utils.writeCharArrayCompat
 import com.kunzisoft.keepass.utils.writeEnum
-import org.apache.commons.codec.binary.Hex
 import org.w3c.dom.Node
 import java.io.ByteArrayInputStream
 import java.io.IOException
@@ -207,9 +207,9 @@ data class MasterCredential(
                 when (keyFileData.size) {
                     32 -> return keyFileData
                     64 -> try {
-                        return Hex.decodeHex(String(keyFileData).toCharArray())
+                        return CodecUtil.decodeHex(String(keyFileData))
                     } catch (_: Exception) {
-                        // Key is not base 64, treat it as binary data
+                        // Key is not hex, treat it as binary data
                     }
                 }
                 // Hash file as binary data
@@ -307,7 +307,7 @@ data class MasterCredential(
                                                     && checkKeyFileHash(dataString, hashString)
                                                 ) {
                                                     Log.i(TAG, "Successful key file hash check.")
-                                                    Hex.decodeHex(dataString.toCharArray())
+                                                    CodecUtil.decodeHex(dataString)
                                                 } else {
                                                     Log.e(TAG, "Unable to check the hash of the key file.")
                                                     null
@@ -330,7 +330,7 @@ data class MasterCredential(
             var success = false
             try {
                 // hexadecimal encoding of the first 4 bytes of the SHA-256 hash of the key.
-                val dataDigest = HashManager.hashSha256(Hex.decodeHex(data.toCharArray()))
+                val dataDigest = HashManager.hashSha256(CodecUtil.decodeHex(data))
                     .copyOfRange(0, 4).toHexString()
                 success = dataDigest == hash
             } catch (e: Exception) {

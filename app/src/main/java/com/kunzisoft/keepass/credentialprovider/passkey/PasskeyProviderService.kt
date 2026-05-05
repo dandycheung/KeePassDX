@@ -246,7 +246,9 @@ class PasskeyProviderService : CredentialProviderService() {
                             passwordEntries.add(
                                 PasswordCredentialEntry(
                                     context = applicationContext,
-                                    username = passwordEntry.username,
+                                    username = passwordEntry.username.ifEmpty {
+                                        getString(R.string.credential_provider_database_username)
+                                    },
                                     icon = passwordEntry.buildIcon(
                                         this@PasskeyProviderService,
                                         database

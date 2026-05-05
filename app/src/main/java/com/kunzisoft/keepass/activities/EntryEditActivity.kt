@@ -477,13 +477,9 @@ class EntryEditActivity : DatabaseLockActivity(),
         }
     }
 
-    override fun viewToInvalidateTimeout(): View? {
-        return coordinatorLayout
-    }
+    override fun viewToInvalidateTimeout(): View? = coordinatorLayout
 
-    override fun finishActivityIfReloadRequested(): Boolean {
-        return true
-    }
+    override fun finishActivityIfReloadRequested(): Boolean = true
 
     override fun onDatabaseRetrieved(database: ContextualDatabase) {
         super.onDatabaseRetrieved(database)

@@ -87,3 +87,19 @@ class Field : Parcelable {
         }
     }
 }
+
+/**
+ * Remove the first field with the [name]
+ */
+fun MutableList<Field>.removeFirstWhen(name: String) {
+    this.firstOrNull { it.name == name }?.let {
+        this.remove(it)
+    }
+}
+
+/**
+ * Return true if contains field with the [name]
+ */
+fun List<Field>.containsWhen(name: String): Boolean {
+    return this.firstOrNull { it.name == name } != null
+}

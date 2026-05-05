@@ -45,7 +45,6 @@ dependencies {
     implementation "joda-time:joda-time:$joda_time_version"
     // Apache Commons
     implementation "commons-io:commons-io:$commons_io_version"
-    implementation "commons-codec:commons-codec:$commons_codec_version"
 
     api project(path: ':crypto')
 

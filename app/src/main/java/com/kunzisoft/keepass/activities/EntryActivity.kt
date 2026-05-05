@@ -438,9 +438,7 @@ class EntryActivity : DatabaseLockActivity() {
         }
     }
 
-    override fun finishActivityIfReloadRequested(): Boolean {
-        return true
-    }
+    override fun finishActivityIfReloadRequested(): Boolean = true
 
     override fun viewToInvalidateTimeout(): View? {
         return coordinatorLayout

@@ -53,9 +53,9 @@ class EntrySelectionLauncherActivity : DatabaseModeActivity() {
             entrySelectionViewModel.manageSelectionResult(it)
         }
 
-    override fun applyCustomStyle() = false
+    override fun applyCustomStyle(): Boolean = false
 
-    override fun finishActivityIfReloadRequested() = false
+    override fun finishActivityIfReloadRequested(): Boolean = false
 
     override fun manageDatabaseInfo(): Boolean = false
 

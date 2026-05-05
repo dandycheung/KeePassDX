@@ -171,9 +171,7 @@ class IconPickerActivity : DatabaseLockActivity() {
         return findViewById<ViewGroup>(R.id.icon_picker_container)
     }
 
-    override fun finishActivityIfReloadRequested(): Boolean {
-        return true
-    }
+    override fun finishActivityIfReloadRequested(): Boolean = true
 
     override fun onDatabaseRetrieved(database: ContextualDatabase) {
         super.onDatabaseRetrieved(database)
