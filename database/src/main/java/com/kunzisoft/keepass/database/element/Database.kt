@@ -1083,8 +1083,8 @@ open class Database {
         entry.afterAssignNewParent()
     }
 
-    fun updateEntry(entry: Entry, dataModified: Boolean = true) {
-        dataModifiedSinceLastLoading = dataModified
+    fun updateEntry(entry: Entry) {
+        dataModifiedSinceLastLoading = true
         entry.entryKDB?.let { entryKDB ->
             mDatabaseKDB?.updateEntry(entryKDB)
         }

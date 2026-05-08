@@ -1,3 +1,6 @@
+KeePassDX(4.4.2)
+ * Fixed duplication of UUIDs by restoring the old behavior of sorting by access #2527 #1911
+
 KeePassDX(4.4.1)
  * Fixed a bug that prevents protected fields from being displayed on some OS with poorly implemented TextView #2524
 

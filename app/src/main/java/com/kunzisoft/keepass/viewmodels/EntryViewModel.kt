@@ -94,10 +94,13 @@ class EntryViewModel(application: Application): AndroidViewModel(application) {
                 {
                     val mainEntry = database.getEntryById(mainEntryId)
                     // To sort by access
-                    mainEntry?.let {
-                        it.touch(modified = false, touchParents = false)
-                        database.updateEntry(entry = it, dataModified = false)
-                    }
+                    /* TODO Sort by access #1911, revert because of #2527
+                    if (database.isReadOnly) {
+                        mainEntry?.let {
+                            it.touch(modified = false, touchParents = false)
+                            database.updateEntry(entry = it)
+                        }
+                    }*/
                     val currentEntry = if (historyPosition > -1) {
                         mainEntry?.getHistory()?.get(historyPosition)
                     } else {
